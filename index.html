@@ -126,7 +126,7 @@
               <td>${v.author}</td>
               <td>${v.publisher}</td>
               <td>
-                <button type="button" class="btn btn-link btn-sm">
+                <button type="button" class="btn btn-link btn-sm" btn-id=${v.id}>
                   删除
                 </button>
               </td>
@@ -136,7 +136,7 @@
     document.body.classList.contains
     document.querySelector('tbody').onclick = function (e) {
       if (e.target.classList.contains('btn-sm')) {
-        console.log(1);
+        // console.log(1)
       }
 
     }
