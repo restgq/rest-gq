@@ -154,6 +154,22 @@
       }
 
     }
+
+    document.querySelector('.btn-dark').onclick = function (e) {
+      e.preventDefault()
+      const ipts = document.querySelectorAll('form input')
+      // console.log(ipts)
+      const data = {}
+      ipts.forEach(item => {
+        data[item.name] = item.value
+      })
+      // console.log(data);
+      if (Object.values(data).includes('')) {
+        alert('内容不能为空')
+        return
+      }
+
+    }
   </script>
 
 </body>
