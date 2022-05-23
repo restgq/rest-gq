@@ -113,6 +113,34 @@
     const bookXios = axios.create({
       baseURL: 'https://autumnfish.cn/'
     })
+
+    bookXios.interceptors.request.use(
+      function (config) {
+        // 在发送请求之前做些什么  请求成功时执行
+        // console.log('请求拦截器-')
+        document.querySelector('.loading-box').style.display = 'block'
+        return config
+      },
+      function (error) {
+        // 对请求错误做些什么 请求失败时执行
+        return Promise.reject(error)
+      }
+    )
+
+
+    // 添加响应拦截器
+    bookXios.interceptors.response.use(
+      function (response) {
+        // 对响应数据做点什么  服务器响应数据成功 触发
+        // console.log('响应拦截器')
+        document.querySelector('.loading-box').style.display = 'none'
+        return response
+      },
+      function (error) {
+        // 对响应错误做点什么 响应失败触发
+        return Promise.reject(error)
+      }
+    )
     // 默认打开页面通过调用图书列表接口，获取列表信息并渲染
     function fn() {
       bookXios({
