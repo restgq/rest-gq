@@ -173,7 +173,15 @@
         method: 'post',
         data
       }).then(res => {
-        console.log('res:', res)
+        // console.log('res:', res)
+        alert(res.data.msg)
+        if (res.data.status === 200) {
+          // 添加成功 更新页面
+          fn()
+
+        } else if (res.data.status === 500) {
+          // 不需要 更新页面
+        }
       })
 
     }
