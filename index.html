@@ -133,10 +133,21 @@
             </tr>`
       }).join('')
     })
-    document.body.classList.contains
+
     document.querySelector('tbody').onclick = function (e) {
       if (e.target.classList.contains('btn-sm')) {
         // console.log(1)
+        const id = e.target.getAttribute('btn-id')
+        bookXios({
+          url: '/api/delbook',
+          method: 'get',
+          params: {
+            id
+          }
+        }).then(res => {
+          // console.log('res:', res)
+          alert(res.data.msg)
+        })
       }
 
     }
