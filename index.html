@@ -168,6 +168,13 @@
         alert('内容不能为空')
         return
       }
+      bookXios({
+        url: '/api/addbook',
+        method: 'post',
+        data
+      }).then(res => {
+        console.log('res:', res)
+      })
 
     }
   </script>
