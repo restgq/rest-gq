@@ -114,13 +114,14 @@
       baseURL: 'https://autumnfish.cn/'
     })
     // 默认打开页面通过调用图书列表接口，获取列表信息并渲染
-    bookXios({
-      url: "/api/getbooks",
-      method: "get"
-    }).then(res => {
-      // console.log('res:', res)
-      document.querySelector('tbody').innerHTML = res.data.data.map(v => {
-        return `<tr>
+    function fn() {
+      bookXios({
+        url: "/api/getbooks",
+        method: "get"
+      }).then(res => {
+        // console.log('res:', res)
+        document.querySelector('tbody').innerHTML = res.data.data.map(v => {
+          return `<tr>
               <th scope="row">${v.id}</th>
               <td>${v.bookname}</td>
               <td>${v.author}</td>
@@ -131,9 +132,10 @@
                 </button>
               </td>
             </tr>`
-      }).join('')
-    })
-
+        }).join('')
+      })
+    }
+    fn()
     document.querySelector('tbody').onclick = function (e) {
       if (e.target.classList.contains('btn-sm')) {
         // console.log(1)
@@ -147,6 +149,7 @@
         }).then(res => {
           // console.log('res:', res)
           alert(res.data.msg)
+          fn()
         })
       }
 
