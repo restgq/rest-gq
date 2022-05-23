@@ -109,7 +109,11 @@
 
   <!-- 导入axios -->
   <script src="./lib/axios.js"></script>
-
+  <script>
+    const bookXios = axios.create({
+      baseURL: 'https://autumnfish.cn/'
+    })
+  </script>
 
 </body>
 
