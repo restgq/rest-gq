@@ -113,6 +113,26 @@
     const bookXios = axios.create({
       baseURL: 'https://autumnfish.cn/'
     })
+    // 默认打开页面通过调用图书列表接口，获取列表信息并渲染
+    bookXios({
+      url: "/api/getbooks",
+      method: "get"
+    }).then(res => {
+      // console.log('res:', res)
+      document.querySelector('tbody').innerHTML = res.data.data.map(v => {
+        return `<tr>
+              <th scope="row">${v.id}</th>
+              <td>${v.bookname}</td>
+              <td>${v.author}</td>
+              <td>${v.publisher}</td>
+              <td>
+                <button type="button" class="btn btn-link btn-sm">
+                  删除
+                </button>
+              </td>
+            </tr>`
+      }).join('')
+    })
   </script>
 
 </body>
